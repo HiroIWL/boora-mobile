@@ -1,15 +1,19 @@
-import { StyleSheet, Text } from "react-native";
+import { Container } from './Container';
+import { Typography } from './Typography';
+type HeaderProps = {
+  isAuthenticated?: boolean;
+};
 
-export default function Header() {
-  return <Text style={styles.title}>Boora !</Text>;
+export function Header({ isAuthenticated }: HeaderProps) {
+  return isAuthenticated ? (
+    <Container fluid={true} shadow={true} padding="xs">
+      <Typography weight="bold" variant="subtitle" color="primary">
+        Boora !
+      </Typography>
+    </Container>
+  ) : (
+    <Typography weight="bold" variant="headline" color="primary">
+      Boora !
+    </Typography>
+  );
 }
-
-const styles = StyleSheet.create({
-  title: {
-    fontSize: 32,
-    fontFamily: "JosefinSans_700Bold",
-    color: "#FF9800",
-    textAlign: "center", 
-    width: "100%",
-  },
-});
